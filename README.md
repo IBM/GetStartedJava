@@ -6,7 +6,7 @@
 
 <!--Add a new Title and fill in the blanks -->
 # Get Started Using Liberty on IBM Cloud with your Java Applications
-In this Code Pattern, we will show you how to build Java applications integrated with Liberty on IBM Cloud.
+In this Code Pattern, we will show you how to build Java applications using Liberty on IBM Cloud.
 
 When the reader has completed this Code Pattern, they will understand how to:
 
@@ -19,7 +19,8 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Flow
 <!--Add new flow steps based on the architecture diagram-->
-1. User provides name for the app
+1. User sets up and imports code into Liberty Runttime Environment
+2. User provides name for the app
 2. App checks Redis cache to see if name has already been added
 3. If name hasn't been added, store name in Cloudant
 
@@ -42,7 +43,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 [![](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
 
 
-=======================================================================================================================================
+======================================================================================
 Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
 
 ## Deploy to IBM Cloud
@@ -62,7 +63,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locall
     * wbc-discovery-service
     * wbc-natural-language-understanding-service
     * wbc-tone-analyzer-service
-=======================================================================================================================================
+========================================================================================
 
 ## Running the Application
 Follow these steps to setup and run this code pattern. The steps are described in detail below.
