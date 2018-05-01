@@ -104,7 +104,7 @@ For all three steps, once you complete the option you choose, proceed onto [Add 
 
 <!--optional step-->
 2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
-![](doc/source/images/toolchain-pipeline.png)
+![](images/toolchain.png)
 
 <!--update with service names from manifest.yml-->
 3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix. 
