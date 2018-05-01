@@ -59,27 +59,6 @@ Note: these services are free for those who have a Lite account.  Redis does off
 [![](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
 
 
-======================================================================================
-Use the ``Deploy to IBM Cloud`` button **OR** jump down to Running the Application in the next section.
-
-## Deploy to IBM Cloud
-<!--Update the repo and tracking id-->
-[![Deploy to IBM Cloud]](https://bluemix.net/deploy?repository=https://github.com/IBM/usinglibertytobuildjavaapplications)
-
-1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
-
-<!--optional step-->
-2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
-![](doc/source/images/toolchain-pipeline.png)
-
-<!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `usinglibertytobuildjavaapplications` with a unique suffix. The following services are created and easily identified by the `wbc-` prefix:
-    * wbc-conversation-service
-    * wbc-discovery-service
-    * wbc-natural-language-understanding-service
-    * wbc-tone-analyzer-service
-========================================================================================
-
 ## Running the Application
 Follow these steps to setup and run this code pattern manually. The steps are described in detail below.
 
@@ -106,6 +85,28 @@ Follow these steps to setup and run this code pattern manually. The steps are de
 ```
 $ git clone https://github.com/IBM/UsingLibertytoBuildJavaApplications
 ```
+
+
+======================================================================================
+Use the ``Deploy to IBM Cloud`` button **OR** jump down to Running the Application in the next section.
+
+## Deploy to IBM Cloud
+<!--Update the repo and tracking id-->
+[![Deploy to IBM Cloud]](https://bluemix.net/deploy?repository=https://github.com/ljbennett62/UsingLibertytoBuildJavaApplications)
+
+1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
+
+<!--optional step-->
+2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
+![](doc/source/images/toolchain-pipeline.png)
+
+<!--update with service names from manifest.yml-->
+3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `usinglibertytobuildjavaapplications` with a unique suffix. The following services are created and easily identified by the `wbc-` prefix:
+    * wbc-conversation-service
+    * wbc-discovery-service
+    * wbc-natural-language-understanding-service
+    * wbc-tone-analyzer-service
+========================================================================================
 
 
 ## 2. Run the application locally
