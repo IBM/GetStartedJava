@@ -92,7 +92,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** jump down to Running the Applicati
 
 ## Deploy to IBM Cloud
 <!--Update the repo and tracking id-->
-[![Deploy to IBM Cloud]](https://bluemix.net/deploy?repository=https://github.com/ljbennett62/UsingLibertytoBuildJavaApplications)
+[![Deploy to IBM Cloud]](https://bluemix.net/deploy?repository=https://github.com/ljbennett62/GetStartedJava)
 
 1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
 
