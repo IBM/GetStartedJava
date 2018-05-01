@@ -98,7 +98,7 @@ For all three steps, once you complete the option you choose, proceed onto [Add 
 
 ## Deploy to IBM Cloud
 <!--Update the repo and tracking id-->
-[![Deploy to IBM Cloud]](https://bluemix.net/deploy?repository=https://github.com/ljbennett62/GetStartedJava)
+[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/ljbennett62/GetStartedJava)
 
 1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
 
