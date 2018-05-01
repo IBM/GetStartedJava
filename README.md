@@ -75,14 +75,14 @@ Follow these steps to setup and run this code pattern. The steps are described i
 5. [Add a Database](#5-add-a-database)
 6. [Use the Database](#6-use-the-database)
 7. [Extending this sample to use Compose for Redis](#7-extending-this-sample-to-use-compose-for-redis)
-8. [Import the code into Eclipse](import-the-code-into-eclipse)
-9. [Create a Liberty Server Definition](create-a-liberty-server-definition)
-10. [Add a Maven dependency for the Jedis Redis client](add-a-maven-dependency-for-the-jedis-redis-client)
-11. [Update the API endpoint class](update-the-api-endpoint-class)
-12. [Add a factory to create a Jedis connection pool](add-a-factory-to-create-a-jedis-connection-pool)
-13. [Add the Properties file for use when running locally](add-the-properties-file-for-use-when-running-locally)
-14. [Test the Code Locally](test-the-code-locally)
-15. [Publish to IBM Cloud](publish-to-ibm-cloud)
+8. [Import the code into Eclipse](#8-import-the-code-into-eclipse)
+9. [Create a Liberty Server Definition](#9-create-a-liberty-server-definition)
+10. [Add a Maven dependency for the Jedis Redis client](#10-add-a-maven-dependency-for-the-jedis-redis-client)
+11. [Update the API endpoint class](#11-update-the-api-endpoint-class)
+12. [Add a factory to create a Jedis connection pool](#12-add-a-factory-to-create-a-jedis-connection-pool)
+13. [Add the Properties file for use when running locally](#13-add-the-properties-file-for-use-when-running-locally)
+14. [Test the Code Locally](#14-test-the-code-locally)
+15. [Publish to IBM Cloud](#15-publish-to-ibm-cloud)
 
 
 ## 1. Clone the Sample Application
