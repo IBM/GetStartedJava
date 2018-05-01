@@ -87,8 +87,14 @@ $ git clone https://github.com/IBM/UsingLibertytoBuildJavaApplications
 ```
 
 
-======================================================================================
-Use the ``Deploy to IBM Cloud`` button **OR** jump down to Running the Application in the next section.
+For the first part of this pattern, you have three deployment options:
+1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) and complete the first step of this application by deploying it directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. When you are done with this step - proceed onto 
+2. Proceed to [Run the application locally](#2-run-the-application-locally)
+3. Complete both steps:
+    * [Prepare the application for deployment](#3-prepare-the-application-for-deployment-to-ibm-cloud)
+    * [Deploy to IBM Cloud](#4-deploy-to-ibm-cloud)
+
+For all three steps, once you complete the option you choose, proceed onto [Add a Database](#5-add-a-database).
 
 ## Deploy to IBM Cloud
 <!--Update the repo and tracking id-->
@@ -101,12 +107,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** jump down to Running the Applicati
 ![](doc/source/images/toolchain-pipeline.png)
 
 <!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `usinglibertytobuildjavaapplications` with a unique suffix. The following services are created and easily identified by the `wbc-` prefix:
-    * wbc-conversation-service
-    * wbc-discovery-service
-    * wbc-natural-language-understanding-service
-    * wbc-tone-analyzer-service
-========================================================================================
+3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix. 
 
 
 ## 2. Run the application locally
@@ -138,9 +139,9 @@ To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The man
 
 ```
   applications:
-   - name: UsingLibertytoBuildJavaApplications
+   - name: GetStartedJava
      random-route: true
-     path: target/UsingLibertytoBuildJavaApplications.war
+     path: target/GetStartedJava.war
      memory: 512M
      instances: 1
 ```
