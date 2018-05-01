@@ -13,7 +13,11 @@ This journey leverages multiple services:
 
 This code pattern is designed for developers with an interest in creating Java applications using an open source platform such as IBM Eclipse Tools for Bluemix.
 
-![](images/GettingStarted.gif)
+<p align="center">
+  <kbd>
+    <img src="docs/GettingStarted.gif" width="300" style="1px solid" alt="Gif of the sample app contains a title that says, Welcome, a prompt asking the user to enter their name, and a list of the database contents which are the names Joe, Jane, and Bob. The user enters the name, Mary and the screen refreshes to display, Hello, Mary, I've added you to the database. The database contents listed are now Mary, Joe, Jane, and Bob.">
+  </kbd>
+</p>
 
 There are two parts to this pattern:
 * The first part consists of deploying the code using a Cloudant backend
@@ -69,7 +73,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** jump down to Running the Applicati
 ![](doc/source/images/toolchain-pipeline.png)
 
 <!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `Getting Started With Java` with a unique suffix. The following services are created and easily identified by the `wbc-` prefix:
+3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `usinglibertytobuildjavaapplications` with a unique suffix. The following services are created and easily identified by the `wbc-` prefix:
     * wbc-conversation-service
     * wbc-discovery-service
     * wbc-natural-language-understanding-service
