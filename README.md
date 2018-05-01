@@ -68,7 +68,7 @@ Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locall
 Follow these steps to setup and run this code pattern. The steps are described in detail below.
 
 ## Steps
-1. [Clone the Sample Application](#1-Clone-the-Sample-Application)
+1. [Clone the Sample Application](#1-clone-the-sample-application)
 2. [Run the application locally using the command line](#2-Run-the-application-locally-using-the-command-line)
 3. [Prepare the application for deployment](#3-Prepare-the-application-for-deployment)
 4. [Deploy to IBM Cloud](#4-Deploy-to-IBM-Cloud)
