@@ -15,7 +15,7 @@ This code pattern is designed for developers with an interest in creating Java a
 
 <p align="center">
   <kbd>
-    <img src="GettingStarted.gif" width="300" style="1px solid">
+    <img src="images/GettingStarted.gif" width="300" style="1px solid">
   </kbd>
 </p>
 
