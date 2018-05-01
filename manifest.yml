@@ -1,7 +1,7 @@
 ---
 applications:
- - name: GetStartedJava
+ - name: UsingLibertytoBuildJavaApplications
    random-route: true
-   path: target/GetStartedJava.war
+   path: target/UsingLibertytoBuildJavaApplications.war
    memory: 256M
    instances: 1
