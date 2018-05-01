@@ -11,7 +11,13 @@ This journey leverages multiple services:
 * The Cloudant NoSQL service is used as a DB to hold _name_ entries submitted from the application
 * The Redis Cloud Service is used as a cache to help filter duplicates from the Cloudant DB
 
-This code pattern is designd for developers with an interest in creating Java applications using an open source platform such as IBM Eclipse Tools for Bluemix.
+This code pattern is designed for developers with an interest in creating Java applications using an open source platform such as IBM Eclipse Tools for Bluemix.
+
+![](images/GettingStarted.gif)
+
+There are two parts to this pattern:
+* The first part consists of deploying the code using a Cloudant backend
+* The second enhances the application further to include Redis as cache broker
 
 When the reader has completed this Code Pattern, they will understand how to:
 
@@ -42,8 +48,7 @@ Note: these services are free for those who have a Lite account.  Redis does off
 ## Featured technologies
 * [IBM Cloud](ibm.com/cloud/): The IBM Cloud offers a broad cloud computing portfolio services.
 * [WebSphere Application Server Liberty](https://www.ibm.com/support/knowledgecenter/en/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/cwlp_about.html): Liberty is a highly composable, fast to start, dynamic application server runtime environment.
-* * [Git Cloud Foundry](https://github.com/cloudfoundry/cli#downloads): The official command line client for Cloud Foundry
-* [Technology](link): description
+* [Git Cloud Foundry](https://github.com/cloudfoundry/cli#downloads): The official command line client for Cloud Foundry
 
 <!--Update this section when the video is created-->
 # Watch the Video
@@ -55,10 +60,9 @@ Use the ``Deploy to IBM Cloud`` button **OR** jump down to Running the Applicati
 
 ## Deploy to IBM Cloud
 <!--Update the repo and tracking id-->
-[![Deploy to IBM Cloud]](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-banking-chatbot.git)
+[![Deploy to IBM Cloud]](https://bluemix.net/deploy?repository=https://github.com/IBM/usinglibertytobuildjavaapplications)
 
 1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
-
 
 <!--optional step-->
 2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
@@ -120,7 +124,7 @@ Run the application locally on Liberty
 $ mvn install liberty:run-server
 ```
 
-When you see the message _The server defaultServer is ready to run a smarter planet_, you can view your application at http://localhost:9080/GetStartedJava".
+When you see the message _The server defaultServer is ready to run a smarter planet_, you can view your application at http://localhost:9080/UsingLibertytoBuildJavaApplications".
 
 To stop your application, press Ctrl-C in the command-line window where you started the application.
 
@@ -129,9 +133,9 @@ To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The man
 
 ```
   applications:
-   - name: GetStartedJava
+   - name: UsingLibertytoBuildJavaApplications
      random-route: true
-     path: target/GetStartedJava.war
+     path: target/UsingLibertytoBuildJavaApplications.war
      memory: 512M
      instances: 1
 ```
