@@ -4,9 +4,9 @@ declared-services:
     label: cloudantNoSQLDB
     plan: Lite
 applications:
- - name: UsingLibertytoBuildJavaApplications
+ - name: GetStartedJava
    random-route: true
-   path: target/UsingLibertytoBuildJavaApplications.war
+   path: target/GetStartedJava.war
    memory: 256M
    instances: 1
    services:
