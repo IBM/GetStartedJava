@@ -6,7 +6,7 @@
 
 <!--Add a new Title and fill in the blanks -->
 # Get Started Using Liberty on IBM Cloud with your Java Applications
-In this Code Pattern, we will show you how to build Java applications integrated with Liberty on IBM Cloud. 
+In this Code Pattern, we will show you how to build Java applications integrated with Liberty on IBM Cloud.
 
 When the reader has completed this Code Pattern, they will understand how to:
 
@@ -20,7 +20,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 ## Flow
 <!--Add new flow steps based on the architecture diagram-->
 1. User provides name for the app
-2. SApp checks Redis cache to see if name has already been added
+2. App checks Redis cache to see if name has already been added
 3. If name hasn't been added, store name in Cloudant
 
 <!--Update this section-->
@@ -45,7 +45,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 =======================================================================================================================================
 Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
 
-## Deploy to IBM Cloud 
+## Deploy to IBM Cloud
 <!--Update the repo and tracking id-->
 [![Deploy to IBM Cloud](https://metrics-tracker.mybluemix.net/stats/527357940ca5e1027fbf945add3b15c4/button.svg)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-banking-chatbot.git)
 
@@ -69,7 +69,7 @@ Follow these steps to setup and run this code pattern. The steps are described i
 
 ## Steps
 1. [Clone the Sample Application](#1-clone-the-sample-application)
-2. [Run the application locally using the command line](#2-run-the-application-locally-using-the-command-line)
+2. [Run the application locally](#2-run-the-application-locally)
 3. [Prepare the application for deployment](#3-prepare-the-application-for-deployment)
 4. [Deploy to IBM Cloud](#4-deploy-to-ibm-cloud)
 5. [Add a Database](#5-add-a-database)
@@ -92,7 +92,7 @@ $ git clone https://github.com/IBM/get-started-java
 ```
 
 
-##2. Run the application locally using the command line
+## 2. Run the application locally
 
 On the command line, change the directory to where you cloned the sample application
 
@@ -116,7 +116,7 @@ When you see the message _The server defaultServer is ready to run a smarter pla
 
 To stop your application, press Ctrl-C in the command-line window where you started the application.
 
-##3. Prepare the application for deployment 
+## 3. Prepare the application for deployment
 To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample manifest.yml file in the get-started-java directory.
 
 ```
@@ -130,7 +130,7 @@ To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The man
 
 Note: In this manifest.yml file, random-route: true generates a random route for your app to prevent your route from colliding with others. If you choose to, you can replace random-route: true with host: myChosenHostName, supplying a host name of your choice.
 
-##4. Deploy to IBM Cloud
+## 4. Deploy to IBM Cloud
 
 Deploy your app to one of the following IBM Cloud regions. For optimal latency, choose a region that's closest to your users.
 
@@ -165,7 +165,7 @@ $ bx cf apps
 
 **Tip:** You can troubleshoot errors in the deployment process by using the ```bx cf logs <Your-App-Name> --recent``` command.
 
-##5. Add a Database
+## 5. Add a Database
 
 Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on IBM Cloud.
 
@@ -177,7 +177,7 @@ Go to the **Connections** (on the left-hand navigation) view and select your app
 
 **Tip:** Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code. Learn more...
 
-##6. Use the Database
+## 6. Use the Database
 
 We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in IBM Cloud, the credentials will be read from the ```VCAP_SERVICES``` environment variable.
 
@@ -187,7 +187,7 @@ We're now going to update your local code to point to this database. We'll store
 2. click **Service Credentials** on the left-hand navigation
 ![](images/Endpoints.png)
 
-3. click on View Credentials 
+3. click on View Credentials
 ![](images/Endpoints.png)
 
 4. Copy and paste just the url from the credentials to the url field of the /src/main/resources/cloudant.properties file (relative to the GettingStarted with Java directory), and save the changes.
@@ -207,13 +207,13 @@ Your local app and the IBM Cloud app are sharing the database. Names you add fro
 
 **Tip** Remember, if you don't need your app live on IBM Cloud, stop the app so you don't incur any unexpected charges.
 
-##7. Extending this sample to use Compose for Redis
+## 7. Extending this sample to use Compose for Redis
 
 This pattern, so far, has a behavior that could be improved with some very simple application logic. When entering the same name twice, the application will add the name to the database a second time. How can we make this better and provide an example of combining a caching service with a data service like Cloudant?
 
-In this part of the pattern, you'll leverge the IBM Eclipse Tools for Bluemix to change the code to use Redis as a cache, either locally or using the Compose for Redis service on Bluemix. 
+In this part of the pattern, you'll leverge the IBM Eclipse Tools for Bluemix to change the code to use Redis as a cache, either locally or using the Compose for Redis service on Bluemix.
 
-##8. Import the code into Eclipse
+## 8. Import the code into Eclipse
 
 Make sure you have installed [Maven](https://maven.apache.org/download.cgi).
 
@@ -225,7 +225,7 @@ Import the get-started.java code into Eclipse using `File` -> `Import` -> `Maven
 
 ![](images/import-maven-project.png)
 
-##9. Create a Liberty Server Definition
+## 9. Create a Liberty Server Definition
 
   Get to servers view by clicking from the Menu bar at the top select `Window` -> Show View -> Servers. You will see the Server view hightlighted at the bottom.
 
@@ -243,7 +243,7 @@ Import the get-started.java code into Eclipse using `File` -> `Import` -> `Maven
 
   In a few seconds, your application should be running at [http://localhost:9080/GetStartedJava/[(http://localhost:9080/GetStartedJava/)]
 
-##10. Add a Maven dependency for the Jedis Redis client
+## 10. Add a Maven dependency for the Jedis Redis client
 
   Use Eclipse to edit the `pom.xml` file to add a Maven dependency to include Jedis.
 
@@ -259,7 +259,7 @@ Import the get-started.java code into Eclipse using `File` -> `Import` -> `Maven
     </dependency>
     ```
 
-##11. Update the API endpoint class
+## 11. Update the API endpoint class
 
 In this step, you'll add a little bit of code to adjust the backend logic used by the application to work with Redis as a cache. Open the `src/main/java/wasdev/sample/rest/VisitorAPI.java` file.
 
@@ -312,7 +312,7 @@ In this step, you'll add a little bit of code to adjust the backend logic used b
 
 4.  Save the edits to the file. At this point, there will be errors reported by Eclipse since the factory method has not been created so **Cancel** instead of redeploying the application to Liberty if it is currently running.
 
-##12 Add a factory to create a Jedis connection pool
+## 12 Add a factory to create a Jedis connection pool
 
 This step is quite a bit more involved.
 
@@ -392,13 +392,13 @@ This step is quite a bit more involved.
 
 5. Don't forget to keep the close } at the end of the JedisPoolFactor class definition and save the file.
 
-##13. Add the Properties file for use when running locally
+## 13. Add the Properties file for use when running locally
 
 1.  Copy the `src/main/resources/cloudant.properties` file to `src/main/resources/redis.properties` and update line 3 to: `redis_url=`
 
     > Since this will be parsed as a full URI, if you want to use a local copy of redis, instead of providing `localhost` as the value, set it to be `redis://localhost:6379/`
 
-##14. Test the Code Locally
+## 14. Test the Code Locally
 
 1.  There should be no code errors after all of the updates are complete and the local Liberty server should automatically refresh. Access the application at http://localhost:9080/GetStartedJava
 
@@ -416,7 +416,7 @@ This step is quite a bit more involved.
 
     ![](images/AliceTwice.png)
 
-##15. Publish to IBM Cloud
+## 15. Publish to IBM Cloud
 
 1.  With the application working correctly, select the application from the navigator and select **Run As**->**Maven install** to build and updated version of the war file.
 
