@@ -88,7 +88,7 @@ $ git clone https://github.com/IBM/UsingLibertytoBuildJavaApplications
 
 
 For the first part of this pattern, you have three deployment options:
-1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) and complete the first step of this application by deploying it directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. When you are done with this step - proceed onto 
+1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) and complete the first step of this application by deploying it directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. 
 2. Proceed to [Run the application locally](#2-run-the-application-locally)
 3. Complete both steps:
     * [Prepare the application for deployment](#3-prepare-the-application-for-deployment-to-ibm-cloud)
