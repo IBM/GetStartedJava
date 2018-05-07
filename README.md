@@ -54,11 +54,6 @@ Note: these services are free for those who have a Lite account.  Redis does off
 * [WebSphere Application Server Liberty](https://www.ibm.com/support/knowledgecenter/en/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/cwlp_about.html): Liberty is a highly composable, fast to start, dynamic application server runtime environment.
 * [Git Cloud Foundry](https://github.com/cloudfoundry/cli#downloads): The official command line client for Cloud Foundry
 
-<!--Update this section when the video is created-->
-# Watch the Video
-[![](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
-
-
 ## Running the Application
 Follow these steps to setup and run this code pattern manually. The steps are described in detail below.
 
