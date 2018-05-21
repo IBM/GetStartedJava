@@ -2,7 +2,7 @@
 
 <!--change the repos -->
 <!--change the tracking number -->
-#[![Build Status](https://travis-ci.org/IBM/watson-banking-chatbot.svg?branch=master)](https://travis-ci.org/IBM/watson-banking-chatbot)
+#[![Build Status](https://travis-ci.org/IBM/GetStartedJava.svg?branch=master)](https://travis-ci.org/IBM/GetStartedJava)
 
 <!--Add a new Title and fill in the blanks -->
 # Get Started Using Liberty on IBM Cloud with your Java Applications
@@ -41,7 +41,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 <!--Update this section-->
 ## Included components
-* [IBM Eclipse Tools for IBM Cloud](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix): The Tools enable rapid deployment and integration of many services from IBM Cloud into your applications, including such services as Watson and big data analytics
+* [IBM Eclipse Tools for IBM Cloud](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_IBM_Cloud): The Tools enable rapid deployment and integration of many services from IBM Cloud into your applications, including such services as Watson and big data analytics
 * [Maven](https://maven.apache.org/download.cgi): Maven is a tool that can now be used for building and managing any Java-based project
 * [Redis](https://redis.io/): Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -50,7 +50,7 @@ Note: these services are free for those who have a Lite account.  Redis does off
 
 <!--Update this section-->
 ## Featured technologies
-* [IBM Cloud](ibm.com/cloud/): The IBM Cloud offers a broad cloud computing portfolio services.
+* [IBM Cloud](https://www.ibm.com/cloud/): The IBM Cloud offers a broad cloud computing portfolio services.
 * [WebSphere Application Server Liberty](https://www.ibm.com/support/knowledgecenter/en/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/cwlp_about.html): Liberty is a highly composable, fast to start, dynamic application server runtime environment.
 * [Git Cloud Foundry](https://github.com/cloudfoundry/cli#downloads): The official command line client for Cloud Foundry
 
@@ -95,7 +95,7 @@ For all three steps, once you complete the option you choose, proceed onto [Add 
 <!--Update the repo and tracking id-->
 [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/GetStartedJava.git)
 
-1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
+1. Press the above `Deploy to IBM Cloud` button and then click on `Deploy`.
 
 <!--optional step-->
 2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
@@ -130,7 +130,7 @@ When you see the message _The server defaultServer is ready to run a smarter pla
 To stop your application, press Ctrl-C in the command-line window where you started the application.
 
 ## 3. Prepare the application for deployment to IBM Cloud
-To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample manifest.yml file in the GetStartedJava directory.
+To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample manifest.yml file in the `GetStartedJava` directory.
 
 ```
   applications:
@@ -176,7 +176,7 @@ $ bx cf apps
 ```
 
 
-**Tip:** You can troubleshoot errors in the deployment process by using the ```bx cf logs <Your-App-Name> --recent``` command.
+**Tip:** You can troubleshoot errors in the deployment process by using the `bx cf logs <Your-App-Name> --recent` command.
 
 ## 5. Add a Database
 
@@ -186,13 +186,13 @@ Next, we'll add a NoSQL database to this application and set up the application 
 Choose the **Data and Analytics** section, then select **Cloudant NoSQL DB** and create your service.
 Go to the **Connections** (on the left-hand navigation) view and select your application, then **Create connection**. You may need to select **connect to app**.
 
-* Select **Restage** when prompted. IBM Cloud will restart your application and provide the database credentials to your application using the ```VCAP_SERVICES``` environment variable. This environment variable is available to the application only when it is running on IBM Cloud.
+* Select **Restage** when prompted. IBM Cloud will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is available to the application only when it is running on IBM Cloud.
 
 **Tip:** Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code.
 
 ## 6. Use the Database
 
-We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in IBM Cloud, the credentials will be read from the ```VCAP_SERVICES``` environment variable.
+We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in IBM Cloud, the credentials will be read from the `VCAP_SERVICES` environment variable.
 
 1. In your browser, go to IBM Cloud, select Dashboard and select your Cloudant service under the Cloud Foundry Services section:
 ![](images/dashboard.png)
@@ -202,7 +202,7 @@ We're now going to update your local code to point to this database. We'll store
 3. click on View Credentials
 ![](images/Getcreds.png)
 
-4. Copy and paste just the url from the credentials to the url field of the /src/main/resources/cloudant.properties file (relative to the GetStartedJava directory), and save the changes.
+4. Copy and paste just the url from the credentials to the url field of the `/src/main/resources/cloudant.properties` file (relative to the GetStartedJava directory), and save the changes.
 
 5. Restart the server
 
@@ -229,7 +229,7 @@ In this part of the pattern, you'll leverge the IBM Eclipse Tools for IBM Cloud 
 
 > For developing and deploying with Eclipse, IBM® Eclipse Tools for IBM Cloud provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with IBM Cloud.
 
-> Download and install [IBM Eclipse Tools for IBM Cloud](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
+> Download and install [IBM Eclipse Tools for IBM Cloud](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_IBM_Cloud).
 
 
 Import the GetStartedJava.java code into Eclipse using `File` -> `Import` -> `Maven` -> `Existing Maven Projects` option.
@@ -238,9 +238,9 @@ Import the GetStartedJava.java code into Eclipse using `File` -> `Import` -> `Ma
 
 ## 9. Create a Liberty Server Definition
 
-  Get to servers view by clicking from the Menu bar at the top select `Window` -> Show View -> Servers. You will see the Server view hightlighted at the bottom of Eclipse platform.
+Get to servers view by clicking from the Menu bar at the top select `Window` -> Show View -> Servers. You will see the Server view hightlighted at the bottom of Eclipse platform.
 
-  ![](images/ProjectExplorerView.png)
+![](images/ProjectExplorerView.png)
 
 
   - In the `Servers` view right-click -> `New` -> `Server`
@@ -251,27 +251,27 @@ Import the GetStartedJava.java code into Eclipse using `File` -> `Import` -> `Ma
   - Continue the wizard with default options to Finish
 
 
-   ![](images/InstallServer.png)
+![](images/InstallServer.png)
 
 
 
-  In a few seconds, your application should be running at [http://localhost:9080/GetStartedJava/[(http://localhost:9080/GetStartedJava/)]
+In a few seconds, your application should be running at [http://localhost:9080/GetStartedJava/](http://localhost:9080/GetStartedJava/)
 
 ## 10. Add a Maven dependency for the Jedis Redis client
 
-  Use Eclipse to edit the `pom.xml` file to add a Maven dependency to include Jedis.
+Use Eclipse to edit the `pom.xml` file to add a Maven dependency to include Jedis.
 
-  ![](images/EditXML.png)
+![](images/EditXML.png)
 
-   Inside the `pom.xml` file, right after the `javax.ws.rs` dependency and before the closing `</dependencies>` tag, add the following and then save the file (around line 63):
+Inside the `pom.xml` file, right after the `javax.ws.rs` dependency and before the closing `</dependencies>` tag, add the following and then save the file (around line 63):
 
-    ```
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.9.0</version>
-    </dependency>
-    ```
+```
+<dependency>
+  <groupId>redis.clients</groupId>
+  <artifactId>jedis</artifactId>
+  <version>2.9.0</version>
+</dependency>
+```
 
 ## 11. Update the API endpoint class
 
