@@ -11,7 +11,7 @@ This journey leverages multiple services:
 * The Cloudant NoSQL service is used as a DB to hold _name_ entries submitted from the application
 * The Redis Cloud Service is used as a cache to help filter duplicates from the Cloudant DB
 
-This code pattern is designed for developers with an interest in creating Java applications using an open source platform such as IBM Eclipse Tools for Bluemix.
+This code pattern is designed for developers with an interest in creating Java applications using an open source platform such as IBM Eclipse Tools for IBM Cloud.
 
 <p align="center">
   <kbd>
@@ -41,7 +41,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 <!--Update this section-->
 ## Included components
-* [IBM Eclipse Tools for Bluemix](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix): The Tools enable rapid deployment and integration of many services from IBM Cloud into your applications, including such services as Watson and big data analytics
+* [IBM Eclipse Tools for IBM Cloud](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix): The Tools enable rapid deployment and integration of many services from IBM Cloud into your applications, including such services as Watson and big data analytics
 * [Maven](https://maven.apache.org/download.cgi): Maven is a tool that can now be used for building and managing any Java-based project
 * [Redis](https://redis.io/): Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
 
@@ -78,7 +78,7 @@ Follow these steps to setup and run this code pattern manually. The steps are de
 ## 1. Clone the Sample Application
 
 ```
-$ git clone https://github.com/IBM/UsingLibertytoBuildJavaApplications
+$ git clone https://github.com/IBM/GetStartedJava.git
 ```
 
 
@@ -93,7 +93,7 @@ For all three steps, once you complete the option you choose, proceed onto [Add 
 
 ## Deploy to IBM Cloud
 <!--Update the repo and tracking id-->
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/ljbennett62/GetStartedJava)
+[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/GetStartedJava.git)
 
 1. Press the above ``Deploy to IBM Cloud`` button and then click on ``Deploy``.
 
@@ -110,7 +110,7 @@ For all three steps, once you complete the option you choose, proceed onto [Add 
 On the command line, change the directory to where you cloned the sample application
 
 ```
-$ cd UsingLibertytoBuildJavaApplications (or what ever directory structure you used)
+$ cd GetStartedJava (or what ever directory structure you used)
 ```
 
 Make sure you have installed [Maven](https://maven.apache.org/download.cgi). Use Maven to install dependencies and build the .war file
@@ -125,12 +125,12 @@ Run the application locally on Liberty
 $ mvn install liberty:run-server
 ```
 
-When you see the message _The server defaultServer is ready to run a smarter planet_, you can view your application at http://localhost:9080/UsingLibertytoBuildJavaApplications".
+When you see the message _The server defaultServer is ready to run a smarter planet_, you can view your application at http://localhost:9080/GetStartedJava".
 
 To stop your application, press Ctrl-C in the command-line window where you started the application.
 
 ## 3. Prepare the application for deployment to IBM Cloud
-To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample manifest.yml file in the UsingLiberyToBuildJavaApplications directory.
+To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample manifest.yml file in the GetStartedJava directory.
 
 ```
   applications:
@@ -163,7 +163,7 @@ $ bx login
 
 If you cannot log in using the cf login or bx login commands because you have a federated user ID, use either the cf login --sso or bx login --sso commands to log in with your single sign on ID. See [Logging in with a federated ID](https://console.bluemix.net/docs/iam/login_fedid.html#federated_id) to learn more.
 
-From within the `UsingLibertytoBuildJavaApplications` directory, push your application to IBM Cloud.
+From within the `GetStartedJava` directory, push your application to IBM Cloud.
 
 ```
 $ bx cf push
@@ -202,7 +202,7 @@ We're now going to update your local code to point to this database. We'll store
 3. click on View Credentials
 ![](images/Getcreds.png)
 
-4. Copy and paste just the url from the credentials to the url field of the /src/main/resources/cloudant.properties file (relative to the UsingLibertytoBuildJavaApplications directory), and save the changes.
+4. Copy and paste just the url from the credentials to the url field of the /src/main/resources/cloudant.properties file (relative to the GetStartedJava directory), and save the changes.
 
 5. Restart the server
 
@@ -210,7 +210,7 @@ We're now going to update your local code to point to this database. We'll store
 $ bx cf push
 ```
 
-Refresh your browser view at [http://localhost:9080/UsingLibertytoBuildJavaApplications/](http://localhost:9080/UsingLibertytoBuildJavaApplications/). Any names you enter into the app will now get added to the database.
+Refresh your browser view at [http://localhost:9080/GetStartedJava/](http://localhost:9080/GetStartedJava/). Any names you enter into the app will now get added to the database.
 
 ![](images/GettingStarted.gif)
 
@@ -223,16 +223,16 @@ Your local app and the IBM Cloud app are sharing the database. Names you add fro
 
 This pattern, so far, has a behavior that could be improved with some very simple application logic. When entering the same name twice, the application will add the name to the database a second time. How can we make this better and provide an example of combining a caching service with a data service like Cloudant?
 
-In this part of the pattern, you'll leverge the IBM Eclipse Tools for Bluemix to change the code to use Redis as a cache, either locally or using the Compose for Redis service on Bluemix.
+In this part of the pattern, you'll leverge the IBM Eclipse Tools for IBM Cloud to change the code to use Redis as a cache, either locally or using the Compose for Redis service on IBM Cloud.
 
 ## 8. Import the code into Eclipse
 
-> For developing and deploying with Eclipse, IBM® Eclipse Tools for Bluemix provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with Bluemix.
+> For developing and deploying with Eclipse, IBM® Eclipse Tools for IBM Cloud provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with IBM Cloud.
 
-> Download and install [IBM Eclipse Tools for Bluemix](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
+> Download and install [IBM Eclipse Tools for IBM Cloud](https://developer.ibm.com/wasdev/downloads/#asset/tools-IBM_Eclipse_Tools_for_Bluemix).
 
 
-Import the UsingLibertytoBuildJavaApplications.java code into Eclipse using `File` -> `Import` -> `Maven` -> `Existing Maven Projects` option.
+Import the GetStartedJava.java code into Eclipse using `File` -> `Import` -> `Maven` -> `Existing Maven Projects` option.
 
 ![](images/import-maven-project.png)
 
@@ -255,7 +255,7 @@ Import the UsingLibertytoBuildJavaApplications.java code into Eclipse using `Fil
 
 
 
-  In a few seconds, your application should be running at [http://localhost:9080/UsingLibertytoBuildJavaApplications/[(http://localhost:9080/UsingLibertytoBuildJavaApplications/)]
+  In a few seconds, your application should be running at [http://localhost:9080/GetStartedJava/[(http://localhost:9080/GetStartedJava/)]
 
 ## 10. Add a Maven dependency for the Jedis Redis client
 
@@ -377,7 +377,7 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
       URI uri;
 
       if (System.getenv("VCAP_SERVICES") != null) {
-        // When running in Bluemix, the VCAP_SERVICES env var will have the credentials for all bound/connected services
+        // When running IBM Cloud, the VCAP_SERVICES env var will have the credentials for all bound/connected services
         // Parse the VCAP JSON structure looking for redis.
         JsonObject redisCredentials = VCAPHelper.getCloudCredentials("redis");
         if(redisCredentials == null){
@@ -422,7 +422,7 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
 
     ![](images/CloudantUsers.png)
 
-4.  Create a Redis instance: Either start a local copy of Redis and update `redis.properties` with the value `redis://localhost:6379/` OR create a Compose for Redis service instance in Bluemix using the service catalog and copy the `URL` credential to the `redis.properties` file.
+4.  Create a Redis instance: Either start a local copy of Redis and update `redis.properties` with the value `redis://localhost:6379/` OR create a Compose for Redis service instance in IBM Cloud using the service catalog and copy the `URL` credential to the `redis.properties` file.
 
 5.  After updating the `redis.properties` file, restart the application on Liberty.
 
@@ -434,9 +434,9 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
 
 1.  With the application working correctly, select the application from the navigator and select **Run As**->**Maven install** to build and updated version of the war file.
 
-2.  If you have created a Compose for Redis service on Bluemix, publish the application to Bluemix. When using the Add application tool, select both the Cloudant and Redis services provisioned in Bluemix.
+2.  If you have created a Compose for Redis service on IBM Cloud, publish the application to IBM Cloud. When using the Add application tool, select both the Cloudant and Redis services provisioned in IBM Cloud.
 
-3.  Check status on the Bluemix dashboard, and then access the application to test it out. If you need to re-synchronize the cache and Cloudant instances, use the redis command-line shown in the service manage panel and the `flushdb` command to remove all inserted keys. Then from the Cloudant dashboard, remove all documents from `mydb`.
+3.  Check status on the IBM Cloud dashboard, and then access the application to test it out. If you need to re-synchronize the cache and Cloudant instances, use the redis command-line shown in the service manage panel and the `flushdb` command to remove all inserted keys. Then from the Cloudant dashboard, remove all documents from `mydb`.
 
 
 <!--Include any relevant links-->
