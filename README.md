@@ -2,7 +2,7 @@
 
 <!--change the repos -->
 <!--change the tracking number -->
-#[![Build Status](https://travis-ci.org/IBM/GetStartedJava.svg?branch=master)](https://travis-ci.org/IBM/GetStartedJava)
+[![Build Status](https://travis-ci.com/IBM/GetStartedJava.svg?branch=master)](https://travis-ci.com/IBM/GetStartedJava)
 
 <!--Add a new Title and fill in the blanks -->
 # Get Started Using Liberty on IBM Cloud with your Java Applications
