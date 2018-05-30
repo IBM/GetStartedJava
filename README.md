@@ -34,7 +34,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Flow
 <!--Add new flow steps based on the architecture diagram-->
-1. User sets up and imports code into Liberty Runttime Environment
+1. User sets up and imports code into Liberty Runtime Environment
 2. User provides name for the app
 2. App checks Redis cache to see if name has already been added
 3. If name hasn't been added, store name in Cloudant
@@ -98,7 +98,7 @@ For all three steps, once you complete the option you choose, proceed onto [Add 
 1. Press the above `Deploy to IBM Cloud` button and then click on `Deploy`.
 
 <!--optional step-->
-2. In Toolchains, click on Delivery Pipeline to watch while the app is deployed. Once deployed, the app can be viewed by clicking 'View app'.
+2. In Toolchains, click on `Delivery Pipeline` to watch while the app is deployed. Once deployed, the app can be viewed by clicking `View app`.
 ![](images/toolchain.png)
 
 <!--update with service names from manifest.yml-->
@@ -113,7 +113,7 @@ On the command line, change the directory to where you cloned the sample applica
 $ cd GetStartedJava (or what ever directory structure you used)
 ```
 
-Make sure you have installed [Maven](https://maven.apache.org/download.cgi). Use Maven to install dependencies and build the .war file
+Make sure you have installed [Maven](https://maven.apache.org/download.cgi). Use Maven to install dependencies and build the `.war` file
 
 ```
 $ mvn clean install
@@ -127,10 +127,10 @@ $ mvn install liberty:run-server
 
 When you see the message _The server defaultServer is ready to run a smarter planet_, you can view your application at http://localhost:9080/GetStartedJava".
 
-To stop your application, press Ctrl-C in the command-line window where you started the application.
+To stop your application, press `Ctrl-C` in the command-line window where you started the application.
 
 ## 3. Prepare the application for deployment to IBM Cloud
-To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample manifest.yml file in the `GetStartedJava` directory.
+To deploy to IBM Cloud, it can be helpful to set up a `manifest.yml` file. The `manifest.yml` includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample `manifest.yml` file in the `GetStartedJava` directory.
 
 ```
   applications:
@@ -141,7 +141,7 @@ To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. The man
      instances: 1
 ```
 
-Note: In this manifest.yml file, random-route: true generates a random route for your app to prevent your route from colliding with others. If you choose to, you can replace random-route: true with host: myChosenHostName, supplying a host name of your choice.
+Note: In this `manifest.yml` file, random-route: true generates a random route for your app to prevent your route from colliding with others. If you choose to, you can replace random-route: true with host: myChosenHostName, supplying a host name of your choice.
 
 ## 4. Deploy to IBM Cloud
 
@@ -161,7 +161,7 @@ Log in to your IBM Cloud account.
 $ bx login
 ```
 
-If you cannot log in using the cf login or bx login commands because you have a federated user ID, use either the cf login --sso or bx login --sso commands to log in with your single sign on ID. See [Logging in with a federated ID](https://console.bluemix.net/docs/iam/login_fedid.html#federated_id) to learn more.
+If you cannot log in using the `cf login` or `bx login` commands because you have a federated user ID, use either the `cf login --sso` or `bx login --sso` commands to log in with your single sign on ID. See [Logging in with a federated ID](https://console.bluemix.net/docs/iam/login_fedid.html#federated_id) to learn more.
 
 From within the `GetStartedJava` directory, push your application to IBM Cloud.
 
@@ -202,7 +202,7 @@ We're now going to update your local code to point to this database. We'll store
 3. click on View Credentials
 ![](images/Getcreds.png)
 
-4. Copy and paste just the url from the credentials to the url field of the `/src/main/resources/cloudant.properties` file (relative to the GetStartedJava directory), and save the changes.
+4. Copy and paste just the url from the credentials to the url field of the `/src/main/resources/cloudant.properties` file (relative to the `GetStartedJava` directory), and save the changes.
 
 5. Restart the server
 
@@ -238,7 +238,7 @@ Import the GetStartedJava.java code into Eclipse using `File` -> `Import` -> `Ma
 
 ## 9. Create a Liberty Server Definition
 
-Get to servers view by clicking from the Menu bar at the top select `Window` -> Show View -> Servers. You will see the Server view hightlighted at the bottom of Eclipse platform.
+Get to servers view by clicking from the Menu bar at the top select `Window` -> `Show View` -> `Servers`. You will see the Server view hightlighted at the bottom of Eclipse platform.
 
 ![](images/ProjectExplorerView.png)
 
