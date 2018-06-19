@@ -105,14 +105,14 @@ For both options, once you complete the respective option , proceed thereafter t
 <!--Update the repo and tracking id-->
 [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/GetStartedJava.git)
 
-1. Press the above `Deploy to IBM Cloud` button and then click on `Deploy`.
+a. Press the above `Deploy to IBM Cloud` button and then click on `Deploy`.
 
 <!--optional step-->
-2. In Toolchains, click on `Delivery Pipeline` to watch while the app is deployed. Once deployed, the app can be viewed by clicking `View app`.
+b. In Toolchains, click on `Delivery Pipeline` to watch while the app is deployed. Once deployed, the app can be viewed by clicking `View app`.
 ![](images/toolchain.png)
 
 <!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix.
+c. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix.
 
 Once you have deployed the application successfully,  you can proceed onto [Add a Database](#6-add-a-database).
 
@@ -214,19 +214,19 @@ Go to the **Connections** (on the left-hand navigation) view and select your app
 
 We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in IBM Cloud, the credentials will be read from the `VCAP_SERVICES` environment variable.
 
-1. In your browser, go to IBM Cloud, select Dashboard and select your Cloudant service under the Cloud Foundry Services section:
+a. In your browser, go to IBM Cloud, select Dashboard and select your Cloudant service under the Cloud Foundry Services section:
 ![](images/dashboard.png)
 
-2. click **Service Credentials** on the left-hand navigation
+b. click **Service Credentials** on the left-hand navigation
 
-3. If you don't see "view Credentials", select the button `New credential` to create credentials that your local application will access.
+c. If you don't see "view Credentials", select the button `New credential` to create credentials that your local application will access.
 
-4. click on View Credentials
+d. click on View Credentials
 ![](images/Getcreds.png)
 
-5. Copy and paste just the url from the credentials to the url field of the `/src/main/resources/cloudant.properties` file (relative to the `GetStartedJava` directory), and save the changes.
+e. Copy and paste just the url from the credentials to the url field of the `/src/main/resources/cloudant.properties` file (relative to the `GetStartedJava` directory), and save the changes.
 
-6. Restart the server
+f. Restart the server
 
 ```
 $ bx cf push
@@ -260,7 +260,7 @@ Import the GetStartedJava.java code into Eclipse using `File` -> `Import` -> `Ma
 
 ## 10. Create a Liberty Server Definition
 
-Get to servers view by clicking from the Menu bar at the top select `Window` -> `Show View` -> `Servers`. You will see the Server view hightlighted at the bottom of Eclipse platform.
+Get to servers view by clicking from the Menu bar at the top select `Window` -> `Show View` -> `Servers`. You will see the Server view highlighted at the bottom of Eclipse platform.
 
 ![](images/ProjectExplorerView.png)
 
@@ -274,8 +274,6 @@ Get to servers view by clicking from the Menu bar at the top select `Window` -> 
 
 
 ![](images/InstallServer.png)
-
-
 
 In a few seconds, your application should be running at [http://localhost:9080/GetStartedJava/](http://localhost:9080/GetStartedJava/)
 
@@ -301,37 +299,39 @@ In this step, you'll add a little bit of code to adjust the backend logic used b
 
 a.  Add imports for Jedis and JedisPool. These can go in at line 31, appending before the `import wasdev...` statements.
 
-    ```java
+``` java
     import redis.clients.jedis.Jedis;
     import redis.clients.jedis.JedisPool;
     import wasdev.sample.store.JedisPoolFactory;
-    ```
+```
 
 b.  Copying the style of the example, add after the statement `VisitorStore store = VisitorStoreFactory.getInstance()` on line 42, a statement that retrieves the `JedisPool` instance.
 
-    ```java
+``` java
     //Our database store
     VisitorStore store = VisitorStoreFactory.getInstance();
 
     //Get instance of our Jedis pool
     JedisPool pool = JedisPoolFactory.getInstance();
-    ```
+
+```
 
 c. Update the code in the `newToDo` method marked with the `@POST` annotation to perform some checking when a `store` is available for persisting visitors. Starting near line 109, *replace* the original code:
 
-    ```java
+``` Java
     store.persist(visitor);
     return String.format("Hello %s! I've added you to the database.", visitor.getName());
-    ```
 
-    With code that will get a Jedis instance from the    
+```
+
+> With code that will get a Jedis instance from the    
     pool, and see if a user has already been added. If so, send a modified greeting. If not, persist the
     user to the store and add the user name as a key to
     the cache.
 
-    ```java
+```java
     try {
-        (Jedis jedis = pool.getResource())
+        Jedis jedis = pool.getResource()
         /// check to see if this user is already in the cache
         if ( jedis.get(visitor.getName()) != null ) {
           return String.format("Hello %s! It's nice to see you again.", visitor.getName());
@@ -345,9 +345,10 @@ c. Update the code in the `newToDo` method marked with the `@POST` annotation to
       store.persist(visitor);
       return String.format("Hello %s! I've added you to the database.", visitor.getName());
     }
-    ```
+
+```
 > For the case of a cache hit, this change to the code
-  avoids the cost of persisting the same data to the data store additional times. Jedis implements  Closeable, so it will be auto-closed after the `return`  or the last statement in the `try`. In the case where no Redis service is available, the catch on the exception defaults to the original behavior.
+  avoids the cost of persisting the same data to the data store additional times. Jedis implements Closeable, so it will be auto-closed after the `return`  or the last statement in the `try`. In the case where no Redis service is available, the catch on the exception defaults to the original behavior.
 
 d. Save the edits to the file. At this point, there will be errors reported by Eclipse since the factory method has not been created so **Cancel** instead of redeploying the application to Liberty if it is currently running.
 
@@ -357,7 +358,7 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
 
 a. Begin by copying the `/src/main/wasdev.sample.store/VisitorStoreFactory.java` class to a class file called `/src/main/wasdev.sample.store/JedisPoolFactory.java`. Add in imports after the `package` statement.
 
-    ```java
+```java
     package wasdev.sample.store;
 
     import java.net.URI;
@@ -366,11 +367,11 @@ a. Begin by copying the `/src/main/wasdev.sample.store/VisitorStoreFactory.java`
     import com.google.gson.JsonObject;
 
     import redis.clients.jedis.JedisPool;
-    ```
+```
 
 b. Rename the class to `JedisPoolFactory` and replace the constructor for the class.
 
-    ```java
+```java
     public class JedisPoolFactory {
 
         private static JedisPool pool;
@@ -382,56 +383,53 @@ b. Rename the class to `JedisPoolFactory` and replace the constructor for the cl
                 pool = null;
             }
         }
-    ```
+    }
+```
 
-    > To keep the code changes simple, we will add to this factory class the `getRedisURI` method for creating a URI to use in the `JedisPool` constructor.
+> To keep the code changes simple, we will add to the factory class the `getRedisURI` method for creating a URI to use in the `JedisPool` constructor.
 
-c.  Update the `getInstance` method to return the `JedisPool`
+c. Update the `getInstance` method to return the `JedisPool`
 
-    ```java
+```java
     public static JedisPool getInstance() {
       return pool;
     }
-    ```
+```
 
-<<<<<<< HEAD
-d.  Using a slightly modified version of the code from `CloudantVisitorStore.java`, obtain the credentials for the Redis instance and provide them as a `URI` object. You will see in `CloudantVisitorStore.java` that this code block returns a `String`, but for the `JedisPool` constructor, a `String` argument is only parsed for a hostname, and not interpreted as a full url. Add after the `getInstance` method in the JedisPoolFactor.java file:
-=======
-4.  Using a slightly modified version of the code from `CloudantVisitorStore.java`, obtain the credentials for the Redis instance and provide them as a `URI` object. You will see in `CloudantVisitorStore.java` that this code block returns a `String`, but for the `JedisPool` constructor, a `String` argument is only parsed for a hostname, and not interpreted as a full url. Add after the `getInstance` method in the `JedisPoolFactor.java` file:
->>>>>>> 65cc03badfc9eb4fcf0f3d2ad99263e8bf72d42d
+d. Using a slightly modified version of the code from `CloudantVisitorStore.java`, obtain the credentials for the Redis instance and provide them as a `URI` object. You will see in `CloudantVisitorStore.java` that this code block returns a `String`, but for the `JedisPool` constructor, a `String` argument is only parsed for a hostname, and not interpreted as a full url. Add after the `getInstance` method in the JedisPoolFactor.java file:
 
-    ```java
-    private static URI getRedisURI() {
-      String url;
-      URI uri;
+```java
+  private static URI getRedisURI() {
+    String url;
+    URI uri;
 
-      if (System.getenv("VCAP_SERVICES") != null) {
-        // When running IBM Cloud, the VCAP_SERVICES env var will have the credentials for all bound/connected services
-        // Parse the VCAP JSON structure looking for redis.
-        JsonObject redisCredentials = VCAPHelper.getCloudCredentials("redis");
-        if(redisCredentials == null){
-          System.out.println("No redis cache service bound to this application");
-          return null;
-        }
-        url = redisCredentials.get("uri").getAsString();
-      } else {
-        System.out.println("Running locally. Looking for credentials in redis.properties");
-        url = VCAPHelper.getLocalProperties("redis.properties").getProperty("redis_url");
-        if(url == null || url.length()==0){
-          System.out.println("To use a database, set the Redis url in src/main/resources/redis.properties");
-          return null;
-        }
+    if (System.getenv("VCAP_SERVICES") != null) {
+      // When running IBM Cloud, the VCAP_SERVICES env var will have the credentials for all bound/connected services
+      // Parse the VCAP JSON structure looking for redis.
+      JsonObject redisCredentials = VCAPHelper.getCloudCredentials("redis");
+      if(redisCredentials == null){
+        System.out.println("No redis cache service bound to this application");
+        return null;
       }
-      try {
-        uri = new URI(url);
-          return uri;
-      } catch (URISyntaxException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
+      url = redisCredentials.get("uri").getAsString();
+    } else {
+      System.out.println("Running locally. Looking for credentials in redis.properties");
+      url = VCAPHelper.getLocalProperties("redis.properties").getProperty("redis_url");
+      if(url == null || url.length()==0){
+        System.out.println("To use a database, set the Redis url in src/main/resources/redis.properties");
         return null;
       }
     }
-    ```
+    try {
+      uri = new URI(url);
+        return uri;
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+      return null;
+    }
+  }
+```
 
 e. Don't forget to keep the close } at the end of the JedisPoolFactor class definition and save the file.
 
@@ -439,7 +437,7 @@ e. Don't forget to keep the close } at the end of the JedisPoolFactor class defi
 
 Copy the `src/main/resources/cloudant.properties` file to `src/main/resources/redis.properties` and update line 3 to: `redis_url=`
 
-    > Since this will be parsed as a full URI, if you want to use a local copy of redis, instead of providing `localhost` as the value, set it to be `redis://localhost:6379/`
+> Since this will be parsed as a full URI, if you want to use a local copy of redis, instead of providing `localhost` as the value, set it to be `redis://localhost:6379/`
 
 ## 14. Test the Code Locally
 
@@ -449,7 +447,7 @@ b.  Add a user in the application. And then add a user of the same name. Since t
 
 c.  In IBM Cloud, go to the Cloudant dashboard for the service, if there are any documents listed, select all of them in the `mydb` database and then delete them:
 
-    ![](images/CloudantUsers.png)
+![](images/CloudantUsers.png)
 
 d.  Create a Redis instance: Either start a local copy of Redis and update `redis.properties` with the value `redis://localhost:6379/` OR create a Compose for Redis service instance in IBM Cloud using the service catalog and copy the `URL` credential to the `redis.properties` file.
 
@@ -457,7 +455,7 @@ e.  After updating the `redis.properties` file, restart the application on Liber
 
 f.  Use the application again. Try to use the same name twice. At this point, Redis will catch the submission and prevent duplicates.
 
-    ![](images/AliceTwice.png)
+![](images/AliceTwice.png)
 
 ## 15. Publish to IBM Cloud
 
