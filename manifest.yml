@@ -1,13 +1,7 @@
 ---
-declared-services:
-  Cloudant-service:
-    label: cloudantNoSQLDB
-    plan: Lite
 applications:
  - name: GetStartedJava
    random-route: true
    path: target/GetStartedJava.war
    memory: 256M
    instances: 1
-   services:
-   - Cloudant-service

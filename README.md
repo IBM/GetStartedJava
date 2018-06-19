@@ -36,8 +36,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 <!--Add new flow steps based on the architecture diagram-->
 1. User sets up and imports code into Liberty Runtime Environment
 2. User provides name for the app
-2. App checks Redis cache to see if name has already been added
-3. If name hasn't been added, store name in Cloudant
+3. App checks Redis cache to see if name has already been added; if name hasn't been added, store name in Cloudant
 
 <!--Update this section-->
 ## Included components
@@ -54,12 +53,31 @@ Note: these services are free for those who have a Lite account.  Redis does off
 * [WebSphere Application Server Liberty](https://www.ibm.com/support/knowledgecenter/en/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/cwlp_about.html): Liberty is a highly composable, fast to start, dynamic application server runtime environment.
 * [Git Cloud Foundry](https://github.com/cloudfoundry/cli#downloads): The official command line client for Cloud Foundry
 
+## Install Prerequisites
+#### IBM Cloud CLI
+To interact with the hosted offerings, the IBM Cloud CLI will need to be installed beforehand. The latest CLI releases can be found at the link [here](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install). An install script is maintained at the mentioned link, which can be executed with one of the following commands
+
+```
+# Mac OSX
+curl -fsSL https://clis.ng.bluemix.net/install/osx | sh
+
+# Linux
+curl -fsSL https://clis.ng.bluemix.net/install/linux | sh
+
+# Powershell
+iex(New-Object Net.WebClient).DownloadString('https://clis.ng.bluemix.net/install/powershell')
+```
+After installation is complete, confirm the CLI is working by printing the version like so
+```
+bx -v
+```
+
 ## Running the Application
 Follow these steps to setup and run this code pattern manually. The steps are described in detail below.
 
 ## Steps
 1. [Clone the Sample Application](#1-clone-the-sample-application)
-2. [Run the application locally](#2-run-the-application-locally)
+2. [Run the application locally](#2-manually-deploy-app-to-the-IBM-Cloud)
 3. [Prepare the application for deployment](#3-prepare-the-application-for-deployment-to-ibm-cloud)
 4. [Deploy to IBM Cloud](#4-deploy-to-ibm-cloud)
 5. [Add a Database](#5-add-a-database)
@@ -75,23 +93,17 @@ Follow these steps to setup and run this code pattern manually. The steps are de
 15. [Publish to IBM Cloud](#15-publish-to-ibm-cloud)
 
 
-## 1. Clone the Sample Application
-
-```
-$ git clone https://github.com/IBM/GetStartedJava.git
-```
 
 
-For the first part of this pattern, you have three deployment options:
-1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) and complete the first step of this application by deploying it directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. 
-2. Proceed to [Run the application locally](#2-run-the-application-locally)
-3. Complete both steps:
-    * [Prepare the application for deployment](#3-prepare-the-application-for-deployment-to-ibm-cloud)
-    * [Deploy to IBM Cloud](#4-deploy-to-ibm-cloud)
+For the first part of this pattern, you have two deployment options:
+1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) deploy the application directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. Proceed to the section: [Deploy to IBM Cloud](#1-Deploy-to-IBM-Cloud).
 
-For all three steps, once you complete the option you choose, proceed onto [Add a Database](#5-add-a-database).
+2. Manually deploy the application to the IBM Cloud by first proceeding to [Clone the Sample Application](#2-clone-the-sample-application).
 
-## Deploy to IBM Cloud
+For both steps, once you complete the respective option , proceed thereafter to the section: [Add a Database](#5-add-a-database).
+
+
+## 1. Deploy to IBM Cloud
 <!--Update the repo and tracking id-->
 [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/GetStartedJava.git)
 
@@ -102,10 +114,18 @@ For all three steps, once you complete the option you choose, proceed onto [Add 
 ![](images/toolchain.png)
 
 <!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix. 
+3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix.
+
+Once you have deployed the application successfully,  you can proceed onto [Add a Database](#5-add-a-database).
 
 
-## 2. Run the application locally
+## 2. Clone the Sample Application
+
+```
+$ git clone https://github.com/IBM/GetStartedJava.git
+```
+
+## 3. Manually Deploy App to the IBM Cloud
 
 On the command line, change the directory to where you cloned the sample application
 
@@ -129,7 +149,7 @@ When you see the message _The server defaultServer is ready to run a smarter pla
 
 To stop your application, press `Ctrl-C` in the command-line window where you started the application.
 
-## 3. Prepare the application for deployment to IBM Cloud
+## 4. Prepare the application for deployment to IBM Cloud
 To deploy to IBM Cloud, it can be helpful to set up a `manifest.yml` file. The `manifest.yml` includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. We've provided a sample `manifest.yml` file in the `GetStartedJava` directory.
 
 ```
@@ -143,7 +163,7 @@ To deploy to IBM Cloud, it can be helpful to set up a `manifest.yml` file. The `
 
 Note: In this `manifest.yml` file, random-route: true generates a random route for your app to prevent your route from colliding with others. If you choose to, you can replace random-route: true with host: myChosenHostName, supplying a host name of your choice.
 
-## 4. Deploy to IBM Cloud
+## 5. Deploy to IBM Cloud
 
 Deploy your app to one of the following IBM Cloud regions. For optimal latency, choose a region that's closest to your users.
 
@@ -178,7 +198,7 @@ $ bx cf apps
 
 **Tip:** You can troubleshoot errors in the deployment process by using the `bx cf logs <Your-App-Name> --recent` command.
 
-## 5. Add a Database
+## 6. Add a Database
 
 Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on IBM Cloud.
 
@@ -190,7 +210,7 @@ Go to the **Connections** (on the left-hand navigation) view and select your app
 
 **Tip:** Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code.
 
-## 6. Use the Database
+## 7. Use the Database
 
 We're now going to update your local code to point to this database. We'll store the credentials for the services in a properties file. This file will get used ONLY when the application is running locally. When running in IBM Cloud, the credentials will be read from the `VCAP_SERVICES` environment variable.
 
@@ -219,13 +239,13 @@ Your local app and the IBM Cloud app are sharing the database. Names you add fro
 
 **Tip** Remember, if you don't need your app live on IBM Cloud, stop the app so you don't incur any unexpected charges.
 
-## 7. Extending this sample to use Compose for Redis
+## 8. Extending this sample to use Compose for Redis
 
 This pattern, so far, has a behavior that could be improved with some very simple application logic. When entering the same name twice, the application will add the name to the database a second time. How can we make this better and provide an example of combining a caching service with a data service like Cloudant?
 
 In this part of the pattern, you'll leverge the IBM Eclipse Tools for IBM Cloud to change the code to use Redis as a cache, either locally or using the Compose for Redis service on IBM Cloud.
 
-## 8. Import the code into Eclipse
+## 9. Import the code into Eclipse
 
 > For developing and deploying with Eclipse, IBM® Eclipse Tools for IBM Cloud provides plug-ins that can be installed into an existing Eclipse environment to assist in integrating the developer's integrated development environment (IDE) with IBM Cloud.
 
@@ -236,7 +256,7 @@ Import the GetStartedJava.java code into Eclipse using `File` -> `Import` -> `Ma
 
 ![](images/import-maven-project.png)
 
-## 9. Create a Liberty Server Definition
+## 10. Create a Liberty Server Definition
 
 Get to servers view by clicking from the Menu bar at the top select `Window` -> `Show View` -> `Servers`. You will see the Server view hightlighted at the bottom of Eclipse platform.
 
@@ -257,7 +277,7 @@ Get to servers view by clicking from the Menu bar at the top select `Window` -> 
 
 In a few seconds, your application should be running at [http://localhost:9080/GetStartedJava/](http://localhost:9080/GetStartedJava/)
 
-## 10. Add a Maven dependency for the Jedis Redis client
+## 11. Add a Maven dependency for the Jedis Redis client
 
 Use Eclipse to edit the `pom.xml` file to add a Maven dependency to include Jedis.
 
@@ -273,7 +293,7 @@ Inside the `pom.xml` file, right after the `javax.ws.rs` dependency and before t
 </dependency>
 ```
 
-## 11. Update the API endpoint class
+## 12. Update the API endpoint class
 
 In this step, you'll add a little bit of code to adjust the backend logic used by the application to work with Redis as a cache. Open the `src/main/java/wasdev/sample/rest/VisitorAPI.java` file.
 
@@ -295,18 +315,21 @@ In this step, you'll add a little bit of code to adjust the backend logic used b
     JedisPool pool = JedisPoolFactory.getInstance();
     ```
 
-
-3.  Update the code in the `newToDo` method marked with the `@POST` annotation to perform some checking when a `store` is available for persisting visitors. Starting near line 109, *replace* the original code:
+3. Update the code in the `newToDo` method marked with the `@POST` annotation to perform some checking when a `store` is available for persisting visitors. Starting near line 109, *replace* the original code:
 
     ```java
     store.persist(visitor);
     return String.format("Hello %s! I've added you to the database.", visitor.getName());
     ```
 
-    With code that will get a Jedis instance from the pool, and see if a user has already been added. If so, send a modified greeting. If not, persist the user to the store and add the user name as a key to the cache.
+    With code that will get a Jedis instance from the    
+    pool, and see if a user has already been added. If so, send a modified greeting. If not, persist the
+    user to the store and add the user name as a key to
+    the cache.
 
     ```java
-    try (Jedis jedis = pool.getResource()) {
+    try {
+        (Jedis jedis = pool.getResource())
         /// check to see if this user is already in the cache
         if ( jedis.get(visitor.getName()) != null ) {
           return String.format("Hello %s! It's nice to see you again.", visitor.getName());
@@ -322,15 +345,16 @@ In this step, you'll add a little bit of code to adjust the backend logic used b
     }
     ```
 
-> For the case of a cache hit, this change to the code avoids the cost of persisting the same data to the data store additional times. Jedis implements Closeable, so it will be auto-closed after the return or the last statement in the `try`. In the case where no Redis service is available, the catch on the exception defaults to the original behavior.
+    For the case of a cache hit, this change to the code
+    avoids the cost of persisting the same data to the data store additional times. Jedis implements  Closeable, so it will be auto-closed after the `return`  or the last statement in the `try`. In the case where no Redis service is available, the catch on the exception defaults to the original behavior.
 
-4.  Save the edits to the file. At this point, there will be errors reported by Eclipse since the factory method has not been created so **Cancel** instead of redeploying the application to Liberty if it is currently running.
+4. Save the edits to the file. At this point, there will be errors reported by Eclipse since the factory method has not been created so **Cancel** instead of redeploying the application to Liberty if it is currently running.
 
-## 12 Add a factory to create a Jedis connection pool
+## 13. Add a factory to create a Jedis connection pool
 
 This step is quite a bit more involved.  JedisPool is a threadsafe pool of network connections. You can use the pool to reliably create several Jedis instances, given you return the Jedis instance to the pool when done. Doing this helps overcome strange errors that can occur when multi-threading and achieve great performance.
 
-1.  Begin by copying the `/src/main/wasdev.sample.store/VisitorStoreFactory.java` class to a class file called `/src/main/wasdev.sample.store/JedisPoolFactory.java`. Add in imports after the `package` statement.
+1. Begin by copying the `/src/main/wasdev.sample.store/VisitorStoreFactory.java` class to a class file called `/src/main/wasdev.sample.store/JedisPoolFactory.java`. Add in imports after the `package` statement.
 
     ```java
     package wasdev.sample.store;
