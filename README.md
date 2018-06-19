@@ -93,14 +93,12 @@ Follow these steps to setup and run this code pattern manually. The steps are de
 15. [Publish to IBM Cloud](#15-publish-to-ibm-cloud)
 
 
-
-
-For the first part of this pattern, you have two deployment options:
+#### For the first part of this pattern, you have two deployment options:
 1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) deploy the application directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. Proceed to the section: [Deploy to IBM Cloud](#1-Deploy-to-IBM-Cloud).
 
-2. Manually deploy the application to the IBM Cloud by first proceeding to [Clone the Sample Application](#2-clone-the-sample-application).
+2. Manually deploy the application to the IBM Cloud by first proceeding to [Clone the Sample Application](#2-clone-the-sample-application) and continue through the subsequent steps.
 
-For both steps, once you complete the respective option , proceed thereafter to the section: [Add a Database](#5-add-a-database).
+For both options, once you complete the respective option , proceed thereafter to the section: [Add a Database](#5-add-a-database).
 
 
 ## 1. Deploy to IBM Cloud
@@ -116,7 +114,7 @@ For both steps, once you complete the respective option , proceed thereafter to 
 <!--update with service names from manifest.yml-->
 3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix.
 
-Once you have deployed the application successfully,  you can proceed onto [Add a Database](#5-add-a-database).
+Once you have deployed the application successfully,  you can proceed onto [Add a Database](#6-add-a-database).
 
 
 ## 2. Clone the Sample Application
@@ -161,19 +159,9 @@ To deploy to IBM Cloud, it can be helpful to set up a `manifest.yml` file. The `
      instances: 1
 ```
 
-Note: In this `manifest.yml` file, random-route: true generates a random route for your app to prevent your route from colliding with others. If you choose to, you can replace random-route: true with host: myChosenHostName, supplying a host name of your choice.
+> Note: In this `manifest.yml` file, random-route: true generates a random route for your app to prevent your route from colliding with others. If you choose to, you can replace random-route: true with host: myChosenHostName, supplying a host name of your choice.
 
 ## 5. Deploy to IBM Cloud
-
-Deploy your app to one of the following IBM Cloud regions. For optimal latency, choose a region that's closest to your users.
-
-![](images/Endpoints.png)
-
-Set the API endpoint by replacing <API-endpoint> with the endpoint for your region.
-
-```
-$ bx api <API-endpoint>
-```
 
 Log in to your IBM Cloud account.
 
@@ -181,7 +169,7 @@ Log in to your IBM Cloud account.
 $ bx login
 ```
 
-If you cannot log in using the `cf login` or `bx login` commands because you have a federated user ID, use either the `cf login --sso` or `bx login --sso` commands to log in with your single sign on ID. See [Logging in with a federated ID](https://console.bluemix.net/docs/iam/login_fedid.html#federated_id) to learn more.
+> If you cannot log in using the `cf login` or `bx login` commands because you have a federated user ID, use either the `cf login --sso` or `bx login --sso` commands to log in with your single sign on ID. See [Logging in with a federated ID](https://console.bluemix.net/docs/iam/login_fedid.html#federated_id) to learn more.
 
 From within the `GetStartedJava` directory, push your application to IBM Cloud.
 
@@ -189,7 +177,19 @@ From within the `GetStartedJava` directory, push your application to IBM Cloud.
 $ bx cf push
 ```
 
-Deploying your application can take a few minutes. When deployment completes, you'll see a message that your app is running. View your app at the URL listed in the output of the push command, or view both the app deployment status and the URL by running the following command:
+Note: if you get an error:
+
+`No API endpoint set. Use 'cf login' or 'cf api' to target an endpoint.
+FAILED`
+
+go ahead and enter `bx target cf`, and you should be able to successfully enter the `bx cf push` command.
+
+Deploying your application can take a few minutes. When deployment completes, you'll see a message that your app is running. You will see similar results as this:
+
+![](images/ManuelDeploymentResults.png)
+
+
+View your app at the URL listed in the output of the push command, or view both the app deployment status and the URL by running the following command:
 
 ```
 $ bx cf apps
@@ -203,10 +203,10 @@ $ bx cf apps
 Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on IBM Cloud.
 
 * In your browser, log in to IBM Cloud and go to the Dashboard. Select **Create Resource**.
-Choose the **Data and Analytics** section, then select **Cloudant NoSQL DB** and create your service.
+Choose the **Data and Analytics** section, then select **Cloudant** and create your service.
 Go to the **Connections** (on the left-hand navigation) view and select your application, then **Create connection**. You may need to select **connect to app**.
 
-* Select **Restage** when prompted. IBM Cloud will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is available to the application only when it is running on IBM Cloud.
+* Select **Restage** when prompted. IBM Cloud will restart your application and provide the database credentials directly to your application using the `VCAP_SERVICES` environment variable. Note that if you select the credentials menu on the on the left-hand navigation of the Cloudant service window, you will not see any credentials created. Again, the credentials are provided underneath the covers directly to the application.  The environment variable is available to the application only when it is running on IBM Cloud.
 
 **Tip:** Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code.
 
@@ -219,18 +219,20 @@ We're now going to update your local code to point to this database. We'll store
 
 2. click **Service Credentials** on the left-hand navigation
 
-3. click on View Credentials
+3. If you don't see "view Credentials", select the button `New credential` to create credentials that your local application will access.
+
+4. click on View Credentials
 ![](images/Getcreds.png)
 
-4. Copy and paste just the url from the credentials to the url field of the `/src/main/resources/cloudant.properties` file (relative to the `GetStartedJava` directory), and save the changes.
+5. Copy and paste just the url from the credentials to the url field of the `/src/main/resources/cloudant.properties` file (relative to the `GetStartedJava` directory), and save the changes.
 
-5. Restart the server
+6. Restart the server
 
 ```
 $ bx cf push
 ```
 
-Refresh your browser view at [http://localhost:9080/GetStartedJava/](http://localhost:9080/GetStartedJava/). Any names you enter into the app will now get added to the database.
+Run the command `bx cf apps` to get the application URL to run. Any names you enter into the app will now get added to the database.
 
 ![](images/GettingStarted.gif)
 
@@ -297,7 +299,7 @@ Inside the `pom.xml` file, right after the `javax.ws.rs` dependency and before t
 
 In this step, you'll add a little bit of code to adjust the backend logic used by the application to work with Redis as a cache. Open the `src/main/java/wasdev/sample/rest/VisitorAPI.java` file.
 
-1.  Add imports for Jedis and JedisPool. These can go in at line 31, appending before the `import wasdev...` statements.
+a.  Add imports for Jedis and JedisPool. These can go in at line 31, appending before the `import wasdev...` statements.
 
     ```java
     import redis.clients.jedis.Jedis;
@@ -305,7 +307,7 @@ In this step, you'll add a little bit of code to adjust the backend logic used b
     import wasdev.sample.store.JedisPoolFactory;
     ```
 
-2.  Copying the style of the example, add after the statement `VisitorStore store = VisitorStoreFactory.getInstance()` on line 42, a statement that retrieves the `JedisPool` instance.
+b.  Copying the style of the example, add after the statement `VisitorStore store = VisitorStoreFactory.getInstance()` on line 42, a statement that retrieves the `JedisPool` instance.
 
     ```java
     //Our database store
@@ -315,7 +317,7 @@ In this step, you'll add a little bit of code to adjust the backend logic used b
     JedisPool pool = JedisPoolFactory.getInstance();
     ```
 
-3. Update the code in the `newToDo` method marked with the `@POST` annotation to perform some checking when a `store` is available for persisting visitors. Starting near line 109, *replace* the original code:
+c. Update the code in the `newToDo` method marked with the `@POST` annotation to perform some checking when a `store` is available for persisting visitors. Starting near line 109, *replace* the original code:
 
     ```java
     store.persist(visitor);
@@ -344,17 +346,16 @@ In this step, you'll add a little bit of code to adjust the backend logic used b
       return String.format("Hello %s! I've added you to the database.", visitor.getName());
     }
     ```
+> For the case of a cache hit, this change to the code
+  avoids the cost of persisting the same data to the data store additional times. Jedis implements  Closeable, so it will be auto-closed after the `return`  or the last statement in the `try`. In the case where no Redis service is available, the catch on the exception defaults to the original behavior.
 
-    For the case of a cache hit, this change to the code
-    avoids the cost of persisting the same data to the data store additional times. Jedis implements  Closeable, so it will be auto-closed after the `return`  or the last statement in the `try`. In the case where no Redis service is available, the catch on the exception defaults to the original behavior.
-
-4. Save the edits to the file. At this point, there will be errors reported by Eclipse since the factory method has not been created so **Cancel** instead of redeploying the application to Liberty if it is currently running.
+d. Save the edits to the file. At this point, there will be errors reported by Eclipse since the factory method has not been created so **Cancel** instead of redeploying the application to Liberty if it is currently running.
 
 ## 13. Add a factory to create a Jedis connection pool
 
 This step is quite a bit more involved.  JedisPool is a threadsafe pool of network connections. You can use the pool to reliably create several Jedis instances, given you return the Jedis instance to the pool when done. Doing this helps overcome strange errors that can occur when multi-threading and achieve great performance.
 
-1. Begin by copying the `/src/main/wasdev.sample.store/VisitorStoreFactory.java` class to a class file called `/src/main/wasdev.sample.store/JedisPoolFactory.java`. Add in imports after the `package` statement.
+a. Begin by copying the `/src/main/wasdev.sample.store/VisitorStoreFactory.java` class to a class file called `/src/main/wasdev.sample.store/JedisPoolFactory.java`. Add in imports after the `package` statement.
 
     ```java
     package wasdev.sample.store;
@@ -367,7 +368,7 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
     import redis.clients.jedis.JedisPool;
     ```
 
-2. Rename the class to `JedisPoolFactory` and replace the constructor for the class.
+b. Rename the class to `JedisPoolFactory` and replace the constructor for the class.
 
     ```java
     public class JedisPoolFactory {
@@ -385,7 +386,7 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
 
     > To keep the code changes simple, we will add to this factory class the `getRedisURI` method for creating a URI to use in the `JedisPool` constructor.
 
-3.  Update the `getInstance` method to return the `JedisPool`
+c.  Update the `getInstance` method to return the `JedisPool`
 
     ```java
     public static JedisPool getInstance() {
@@ -393,7 +394,7 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
     }
     ```
 
-4.  Using a slightly modified version of the code from `CloudantVisitorStore.java`, obtain the credentials for the Redis instance and provide them as a `URI` object. You will see in `CloudantVisitorStore.java` that this code block returns a `String`, but for the `JedisPool` constructor, a `String` argument is only parsed for a hostname, and not interpreted as a full url. Add after the `getInstance` method in the JedisPoolFactor.java file:
+d.  Using a slightly modified version of the code from `CloudantVisitorStore.java`, obtain the credentials for the Redis instance and provide them as a `URI` object. You will see in `CloudantVisitorStore.java` that this code block returns a `String`, but for the `JedisPool` constructor, a `String` argument is only parsed for a hostname, and not interpreted as a full url. Add after the `getInstance` method in the JedisPoolFactor.java file:
 
     ```java
     private static URI getRedisURI() {
@@ -428,39 +429,39 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
     }
     ```
 
-5. Don't forget to keep the close } at the end of the JedisPoolFactor class definition and save the file.
+e. Don't forget to keep the close } at the end of the JedisPoolFactor class definition and save the file.
 
 ## 13. Add the Properties file for use when running locally
 
-1.  Copy the `src/main/resources/cloudant.properties` file to `src/main/resources/redis.properties` and update line 3 to: `redis_url=`
+Copy the `src/main/resources/cloudant.properties` file to `src/main/resources/redis.properties` and update line 3 to: `redis_url=`
 
     > Since this will be parsed as a full URI, if you want to use a local copy of redis, instead of providing `localhost` as the value, set it to be `redis://localhost:6379/`
 
 ## 14. Test the Code Locally
 
-1.  There should be no code errors after all of the updates are complete and the local Liberty server should automatically refresh. Access the application at http://localhost:9080/GetStartedJava
+a.  There should be no code errors after all of the updates are complete and the local Liberty server should automatically refresh. Access the application at http://localhost:9080/GetStartedJava
 
-2.  Add a user in the application. And then add a user of the same name. Since there is no Redis service defined, duplicates will still be successful.
+b.  Add a user in the application. And then add a user of the same name. Since there is no Redis service defined, duplicates will still be successful.
 
-3.  In IBM Cloud, go to the Cloudant dashboard for the service, if there are any documents listed, select all of them in the `mydb` database and then delete them:
+c.  In IBM Cloud, go to the Cloudant dashboard for the service, if there are any documents listed, select all of them in the `mydb` database and then delete them:
 
     ![](images/CloudantUsers.png)
 
-4.  Create a Redis instance: Either start a local copy of Redis and update `redis.properties` with the value `redis://localhost:6379/` OR create a Compose for Redis service instance in IBM Cloud using the service catalog and copy the `URL` credential to the `redis.properties` file.
+d.  Create a Redis instance: Either start a local copy of Redis and update `redis.properties` with the value `redis://localhost:6379/` OR create a Compose for Redis service instance in IBM Cloud using the service catalog and copy the `URL` credential to the `redis.properties` file.
 
-5.  After updating the `redis.properties` file, restart the application on Liberty.
+e.  After updating the `redis.properties` file, restart the application on Liberty.
 
-6.  Use the application again. Try to use the same name twice. At this point, Redis will catch the submission and prevent duplicates.
+f.  Use the application again. Try to use the same name twice. At this point, Redis will catch the submission and prevent duplicates.
 
     ![](images/AliceTwice.png)
 
 ## 15. Publish to IBM Cloud
 
-1.  With the application working correctly, select the application from the navigator and select **Run As**->**Maven install** to build and updated version of the war file.
+a.  With the application working correctly, select the application from the navigator and select **Run As**->**Maven install** to build and updated version of the war file.
 
-2.  If you have created a Compose for Redis service on IBM Cloud, publish the application to IBM Cloud. When using the Add application tool, select both the Cloudant and Redis services provisioned in IBM Cloud.
+b.  If you have created a Compose for Redis service on IBM Cloud, publish the application to IBM Cloud. When using the Add application tool, select both the Cloudant and Redis services provisioned in IBM Cloud.
 
-3.  Check status on the IBM Cloud dashboard, and then access the application to test it out. If you need to re-synchronize the cache and Cloudant instances, use the redis command-line shown in the service manage panel and the `flushdb` command to remove all inserted keys. Then from the Cloudant dashboard, remove all documents from `mydb`.
+c.  Check status on the IBM Cloud dashboard, and then access the application to test it out. If you need to re-synchronize the cache and Cloudant instances, use the redis command-line shown in the service manage panel and the `flushdb` command to remove all inserted keys. Then from the Cloudant dashboard, remove all documents from `mydb`.
 
 
 <!--Include any relevant links-->

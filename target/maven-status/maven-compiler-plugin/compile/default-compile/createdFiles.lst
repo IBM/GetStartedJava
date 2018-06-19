@@ -1,5 +1,4 @@
 application/Application.class
-wasdev/sample/store/JedisPoolFactory.class
 wasdev/sample/store/VisitorStore.class
 wasdev/sample/Visitor.class
 wasdev/sample/rest/VisitorAPI.class

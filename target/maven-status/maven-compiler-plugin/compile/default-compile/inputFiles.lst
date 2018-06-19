@@ -1,8 +1,7 @@
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/wasdev/sample/Visitor.java
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/wasdev/sample/rest/VisitorAPI.java
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/wasdev/sample/store/VisitorStoreFactory.java
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/application/Application.java
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/wasdev/sample/store/CloudantVisitorStore.java
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/wasdev/sample/store/VCAPHelper.java
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/wasdev/sample/store/JedisPoolFactory.java
-/Users/laurabennett/2018/Patterns/GettingStartedWithJava/src/main/java/wasdev/sample/store/VisitorStore.java
+/Users/laurabennett/2018/Patterns/GetStartedJava/src/main/java/wasdev/sample/store/VCAPHelper.java
+/Users/laurabennett/2018/Patterns/GetStartedJava/src/main/java/wasdev/sample/Visitor.java
+/Users/laurabennett/2018/Patterns/GetStartedJava/src/main/java/application/Application.java
+/Users/laurabennett/2018/Patterns/GetStartedJava/src/main/java/wasdev/sample/rest/VisitorAPI.java
+/Users/laurabennett/2018/Patterns/GetStartedJava/src/main/java/wasdev/sample/store/VisitorStoreFactory.java
+/Users/laurabennett/2018/Patterns/GetStartedJava/src/main/java/wasdev/sample/store/VisitorStore.java
+/Users/laurabennett/2018/Patterns/GetStartedJava/src/main/java/wasdev/sample/store/CloudantVisitorStore.java
