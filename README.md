@@ -76,29 +76,30 @@ bx -v
 Follow these steps to setup and run this code pattern manually. The steps are described in detail below.
 
 ## Steps
-1. [Clone the Sample Application](#1-clone-the-sample-application)
-2. [Run the application locally](#2-manually-deploy-app-to-the-IBM-Cloud)
-3. [Prepare the application for deployment](#3-prepare-the-application-for-deployment-to-ibm-cloud)
-4. [Deploy to IBM Cloud](#4-deploy-to-ibm-cloud)
-5. [Add a Database](#5-add-a-database)
-6. [Use the Database](#6-use-the-database)
-7. [Extending this sample to use Compose for Redis](#7-extending-this-sample-to-use-compose-for-redis)
-8. [Import the code into Eclipse](#8-import-the-code-into-eclipse)
-9. [Create a Liberty Server Definition](#9-create-a-liberty-server-definition)
-10. [Add a Maven dependency for the Jedis Redis client](#10-add-a-maven-dependency-for-the-jedis-redis-client)
-11. [Update the API endpoint class](#11-update-the-api-endpoint-class)
-12. [Add a factory to create a Jedis connection pool](#12-add-a-factory-to-create-a-jedis-connection-pool)
-13. [Add the Properties file for use when running locally](#13-add-the-properties-file-for-use-when-running-locally)
-14. [Test the Code Locally](#14-test-the-code-locally)
-15. [Publish to IBM Cloud](#15-publish-to-ibm-cloud)
+1. [Deploy to IBM Cloud](#1-deploy-to-ibm-cloud)
+2. [Clone the Sample Application](#2-clone-the-sample-application)
+3. [Manually Deploy App to the IBM Cloud](#3-manually-deploy-app-to-the-ibm-cloud)
+4. [Prepare the Application for Deployment to IBM Cloud](#4-prepare-the-application-for-deployment-to-ibm-cloud)
+5. [Deploy to IBM Cloud](#5-deploy-to-ibm-cloud)
+6. [Add a Database](#6-add-a-database)
+7. [Use the Database](#7-use-the-database)
+8. [Extending this sample to use Compose for Redis](#8-extending-this-sample-to-use-compose-for-redis)
+9. [Import the code into Eclipse](#9-import-the-code-into-eclipse)
+10. [Create a Liberty Server Definition](#10-create-a-liberty-server-definition)
+11. [Add a Maven dependency for the Jedis Redis client](#11-add-a-maven-dependency-for-the-jedis-redis-client)
+12. [Update the API endpoint class](#12-update-the-api-endpoint-class)
+13. [Add a factory to create a Jedis connection pool](#13-add-a-factory-to-create-a-jedis-connection-pool)
+14. [Add the Properties file for use when running locally](#14-add-the-properties-file-for-use-when-running-locally)
+15. [Test the Code Locally](#15-test-the-code-locally)
+16. [Publish to IBM Cloud](#16-publish-to-ibm-cloud)
 
 
 #### For the first part of this pattern, you have two deployment options:
-1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) deploy the application directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. Proceed to the section: [Deploy to IBM Cloud](#1-Deploy-to-IBM-Cloud).
+1. Create an [IBM Cloud account](https://console.bluemix.net/registration/?target=%2Fdashboard%2Fapps) deploy the application directly to the IBM Cloud by using the `Deploy to IBM Cloud` button below. Proceed to the section: [Deploy to IBM Cloud](#1-deploy-to-ibm-cloud).
 
 2. Manually deploy the application to the IBM Cloud by first proceeding to [Clone the Sample Application](#2-clone-the-sample-application) and continue through the subsequent steps.
 
-For both options, once you complete the respective option , proceed thereafter to the section: [Add a Database](#5-add-a-database).
+For both options, once you complete the respective option , proceed thereafter to the section: [Add a Database](#6-add-a-database).
 
 
 ## 1. Deploy to IBM Cloud
@@ -114,7 +115,7 @@ b. In Toolchains, click on `Delivery Pipeline` to watch while the app is deploye
 <!--update with service names from manifest.yml-->
 c. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app is named `GetStartedJava` with a unique suffix.
 
-Once you have deployed the application successfully,  you can proceed onto [Add a Database](#6-add-a-database).
+Once you have deployed the application successfully, you can proceed onto [Add a Database](#6-add-a-database).
 
 
 ## 2. Clone the Sample Application
@@ -433,13 +434,13 @@ d. Using a slightly modified version of the code from `CloudantVisitorStore.java
 
 e. Don't forget to keep the close } at the end of the JedisPoolFactor class definition and save the file.
 
-## 13. Add the Properties file for use when running locally
+## 14. Add the Properties file for use when running locally
 
 Copy the `src/main/resources/cloudant.properties` file to `src/main/resources/redis.properties` and update line 3 to: `redis_url=`
 
 > Since this will be parsed as a full URI, if you want to use a local copy of redis, instead of providing `localhost` as the value, set it to be `redis://localhost:6379/`
 
-## 14. Test the Code Locally
+## 15. Test the Code Locally
 
 a.  There should be no code errors after all of the updates are complete and the local Liberty server should automatically refresh. Access the application at http://localhost:9080/GetStartedJava
 
@@ -457,7 +458,7 @@ f.  Use the application again. Try to use the same name twice. At this point, Re
 
 ![](images/AliceTwice.png)
 
-## 15. Publish to IBM Cloud
+## 16. Publish to IBM Cloud
 
 a.  With the application working correctly, select the application from the navigator and select **Run As**->**Maven install** to build and updated version of the war file.
 
