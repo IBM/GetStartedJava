@@ -243,7 +243,7 @@ Your local app and the IBM Cloud app are sharing the database. Names you add fro
 
 This pattern, so far, has a behavior that could be improved with some very simple application logic. When entering the same name twice, the application will add the name to the database a second time. How can we make this better and provide an example of combining a caching service with a data service like Cloudant?
 
-In this part of the pattern, you'll leverge the IBM Eclipse Tools for IBM Cloud to change the code to use Redis as a cache, either locally or using the Compose for Redis service on IBM Cloud.
+In this part of the pattern, you'll leverage the IBM Eclipse Tools for IBM Cloud to change the code to use Redis as a cache, either locally or using the Compose for Redis service on IBM Cloud.
 
 ## 9. Import the code into Eclipse
 
@@ -266,7 +266,7 @@ Get to servers view by clicking from the Menu bar at the top select `Window` -> 
   - In the `Servers` view right-click -> `New` -> `Server`
   - Select `IBM` -> `WebSphere Application Server Liberty` (See under IBM)
   - Enter a destination path (/Users/USERNAME/liberty)
-  - Select `Download and install a new runttime environment from ibm.com`
+  - Select `Download and install a new runtime environment from ibm.com`
   - Choose `WAS Liberty with Java EE 7 Web Profile`
   - Continue the wizard with default options to Finish
 
@@ -393,7 +393,7 @@ This step is quite a bit more involved.  JedisPool is a threadsafe pool of netwo
     }
     ```
 
-4.  Using a slightly modified version of the code from `CloudantVisitorStore.java`, obtain the credentials for the Redis instance and provide them as a `URI` object. You will see in `CloudantVisitorStore.java` that this code block returns a `String`, but for the `JedisPool` constructor, a `String` argument is only parsed for a hostname, and not interpreted as a full url. Add after the `getInstance` method in the JedisPoolFactor.java file:
+4.  Using a slightly modified version of the code from `CloudantVisitorStore.java`, obtain the credentials for the Redis instance and provide them as a `URI` object. You will see in `CloudantVisitorStore.java` that this code block returns a `String`, but for the `JedisPool` constructor, a `String` argument is only parsed for a hostname, and not interpreted as a full url. Add after the `getInstance` method in the `JedisPoolFactor.java` file:
 
     ```java
     private static URI getRedisURI() {
