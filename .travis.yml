@@ -3,8 +3,6 @@ script: mvn clean verify
 
 matrix:
   include:
-    - language: java
-      script: mvn clean verify
     - language: python
       install: pip install flake8
       script: flake8 . --count --select=E9,F63,F72,F82 --show-source --statistics
