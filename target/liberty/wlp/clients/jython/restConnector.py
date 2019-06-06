@@ -3,6 +3,8 @@
 # wise divested of its trade secrets, irrespective of what has
 # been deposited with the U.S. Copyright Office.
 
+from __future__ import print_function
+
 from java.lang import String
 from java.lang import System
 from java.util import HashMap
@@ -59,13 +61,13 @@ class JMXRESTConnector(object):
 			self.connectAdvanced(host, port, args[0])
 
 	def connectAdvanced(self,host,port,map):
-		print "Connecting to the server..."
+		print("Connecting to the server...")
 		System.setProperty("javax.net.ssl.trustStore", self.trustStore)
 		System.setProperty("javax.net.ssl.trustStorePassword", self.trustStorePassword)
 		url = JMXServiceURL("REST", host, port, "/IBMJMXConnectorREST")
 		self.connector = JMXConnectorFactory.newJMXConnector(url, map)
 		self.connector.connect()
-		print "Successfully connected to the server " + '"' + host + ':%i"' % port
+		print("Successfully connected to the server " + '"' + host + ':%i"' % port)
 
 	def connectBasic(self,host,port,user,password):
 		map = HashMap()
@@ -87,4 +89,3 @@ class JMXRESTConnector(object):
 		# This method can be called after the above connect() is executed successfully.
 		self.mbeanConnection = self.connector.getMBeanServerConnection()
 		return self.mbeanConnection
-
